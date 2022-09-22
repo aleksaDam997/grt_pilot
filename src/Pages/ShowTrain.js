@@ -1,26 +1,28 @@
 import React from 'react'
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from'@react-three/drei';
+import { OrbitControls, Sky } from'@react-three/drei';
 import { Suspense, useState, useRef, useEffect } from 'react';
 import { useLoader, useFrame } from '@react-three/fiber';
-// import Model from './Components/1959_tube_driver_car_-_london_underground';
 import {Model } from '.././Components/Bombardier_s_stock_london_underground';
 import "./ShowTrain.css";
+import { Physics } from '@react-three/cannon';
+import Rail from '../Components/Rail';
 
 export default function ShowTrain() {
   return (
     <div className="canvas-container">
         <Canvas>
             <OrbitControls />
+            <Sky />
             <ambientLight intensity={0.6} />
-            <directionalLight intensity={0.5} />
-            <spotLight intensity={2} position={[-1, 1, 3]} color="red" />
-            <spotLight intensity={2} position={[1, 1, 3]} color="blue" />
-            <spotLight intensity={2} position={[0, 3, -10]} color="white" />
+            <directionalLight intensity={0.5}  />
 
+            <Physics gravity={[0, -30, 0]}>
             <Suspense fallback={null}>
-                <Model scale={0.35}  />
+                <Rail position={[0, -2, 0]}  />
+                <Model position={[0, -2.1, 0]} />
             </Suspense>
+            </Physics>
         </Canvas>
     </div>
   )

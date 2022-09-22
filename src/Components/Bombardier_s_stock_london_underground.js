@@ -16,7 +16,7 @@ export function Model(props) {
 
   useEffect(() => {
     // actions.Animation.fadeIn(0.2);
-    actions.Animation.play();
+    // actions.Animation.play();
     // actions.Animation.fadeOut(0.2);
   })
   return (
