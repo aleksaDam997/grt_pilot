@@ -1,17 +1,17 @@
 .canvas-container {
-    height: 400px;
-    padding: 0;
-    padding-top: 5%;
+    height: 500px;
 
-    display: block;
-    width: 90%;
-    margin: 0 auto;
-    padding: 0;
-    border: 1px solid black;
 
 }
 
 canvas {
     margin: 0;
 
+}
+
+ p {
+    font-size: large;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-right: 5px;
 }

@@ -7,11 +7,19 @@ import {Model } from '.././Components/Bombardier_s_stock_london_underground';
 import "./ShowTrain.css";
 import { Physics } from '@react-three/cannon';
 import Rail from '../Components/Rail';
+import Grass from '../Components/Grass';
 
 export default function ShowTrain() {
+
+  const [animate, setAnimate] = useState(false)
+
   return (
+    <div className="canvas-wrapper">
+    <div className='d-flex justify-content-center align-items-center'>
+      <p className='mx-2'>Let pessengers in..</p> <button className='btn btn-primary mx-2 mb-2' onClick={() => setAnimate(true)} > Open the dor </button>
+    </div>
     <div className="canvas-container">
-        <Canvas>
+        <Canvas camera={{ fov: 45, position: [0, 2, -10]}}>
             <OrbitControls />
             <Sky />
             <ambientLight intensity={0.6} />
@@ -20,10 +28,23 @@ export default function ShowTrain() {
             <Physics gravity={[0, -30, 0]}>
             <Suspense fallback={null}>
                 <Rail position={[0, -2, 0]}  />
-                <Model position={[0, -2.1, 0]} />
+                <Rail position={[40, -2, 0]}  />
+                <Rail position={[-40, -2, 0]}  />
+                <Grass position={[0, -2.1, 0]} />
+                <Model position={[1, -1.9, 0.3]} animate={animate} />
+                {/* <mesh position={[-4, -2.1, 0]}>
+                  <boxGeometry args={[1, 1, 1]} attach="geometry" />
+                  <meshStandardMaterial attach="material" color="red" />
+                </mesh> */}
+                {/* <Box2 position={[0, -2.1, 0]} /> */}
+                {/* <mesh position={[4, -2.1, 0]}>
+                  <boxGeometry args={[1, 1, 1]} attach="geometry" />
+                  <meshStandardMaterial attach="material" color="red" />
+                </mesh> */}
             </Suspense>
             </Physics>
         </Canvas>
+    </div>
     </div>
   )
 }
@@ -35,7 +56,7 @@ function Box2(props) {
     const [hovered, setHover] = useState(false)
     const [active, setActive] = useState(false)
     // Subscribe this component to the render-loop, rotate the mesh every frame
-    useFrame((state, delta) => (mesh.current.rotation.x += 0.01))
+    useFrame((state, delta) => (mesh.current.rotation.x += Math.PI / 45))
     // Return view, these are regular three.js elements expressed in JSX
   
     const[positionX, setPosiotionX] = useState(0)

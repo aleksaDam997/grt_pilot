@@ -11,14 +11,23 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export function Model(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/bombardier_s_stock_london_underground.glb')
+  const { nodes, materials, animations, scene } = useGLTF('/bombardier_s_stock_london_underground.glb')
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    // actions.Animation.fadeIn(0.2);
-    // actions.Animation.play();
-    // actions.Animation.fadeOut(0.2);
-  })
+
+    if(props.animate === true){
+      // actions.Animation.fadeIn(0.2);
+      actions.Animation.play();
+      // actions.Animation.fadeOut(0.2);
+
+    }
+
+   let child = scene.children;
+   console.log(scene.children[0].children[0].children[0].children[0].children.length);
+    
+   scene.children[0].children[0].children[0].children[0].rotationX = Math.PI / 30;
+  }, [props.animate])
   return (
     <group ref={group} {...props} dispose={null} rotation={[0, -Math.PI / 2, 0]}>
       <group name="Sketchfab_Scene">
