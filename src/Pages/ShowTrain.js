@@ -2,12 +2,13 @@ import React from 'react'
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sky } from'@react-three/drei';
 import { Suspense, useState, useRef, useEffect } from 'react';
-import { useLoader, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import {Model } from '.././Components/Bombardier_s_stock_london_underground';
 import "./ShowTrain.css";
 import { Physics } from '@react-three/cannon';
 import Rail from '../Components/Rail';
 import Grass from '../Components/Grass';
+import { Sound } from '../Components/Sound';
 
 export default function ShowTrain() {
 
@@ -17,6 +18,7 @@ export default function ShowTrain() {
     <div className="canvas-wrapper">
     <div className='d-flex justify-content-center align-items-center'>
       <p className='mx-2'>Let pessengers in..</p> <button className='btn btn-primary mx-2 mb-2' onClick={() => setAnimate(true)} > Open the dor </button>
+       <button className='btn btn-danger mx-2 mb-2' onClick={() => setAnimate(false)} > Reset </button>
     </div>
     <div className="canvas-container">
         <Canvas camera={{ fov: 45, position: [0, 2, -10]}}>
@@ -25,6 +27,9 @@ export default function ShowTrain() {
             <ambientLight intensity={0.6} />
             <directionalLight intensity={0.5}  />
 
+            <Sound url={process.env.PUBLIC_URL + "mixkit-train-door-open-1637.wav"} play={animate} />
+
+
             <Physics gravity={[0, -30, 0]}>
             <Suspense fallback={null}>
                 <Rail position={[0, -2, 0]}  />
@@ -32,15 +37,6 @@ export default function ShowTrain() {
                 <Rail position={[-40, -2, 0]}  />
                 <Grass position={[0, -2.1, 0]} />
                 <Model position={[1, -1.9, 0.3]} animate={animate} />
-                {/* <mesh position={[-4, -2.1, 0]}>
-                  <boxGeometry args={[1, 1, 1]} attach="geometry" />
-                  <meshStandardMaterial attach="material" color="red" />
-                </mesh> */}
-                {/* <Box2 position={[0, -2.1, 0]} /> */}
-                {/* <mesh position={[4, -2.1, 0]}>
-                  <boxGeometry args={[1, 1, 1]} attach="geometry" />
-                  <meshStandardMaterial attach="material" color="red" />
-                </mesh> */}
             </Suspense>
             </Physics>
         </Canvas>
@@ -124,5 +120,4 @@ function Box2(props) {
       </mesh>
     )
   }
-  
   

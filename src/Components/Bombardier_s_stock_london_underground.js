@@ -8,6 +8,7 @@ title: Bombardier S Stock London Underground
 
 import React, { useRef, useEffect } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
+import * as THREE from 'three';
 
 export function Model(props) {
   const group = useRef()
@@ -19,6 +20,7 @@ export function Model(props) {
     if(props.animate === true){
       // actions.Animation.fadeIn(0.2);
       actions.Animation.play();
+      actions.Animation.setLoop(THREE.LoopOnce);
       // actions.Animation.fadeOut(0.2);
 
     }
