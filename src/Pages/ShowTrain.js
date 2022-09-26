@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sky } from'@react-three/drei';
 import { Suspense, useState, useRef, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
-import {Model } from '.././Components/Bombardier_s_stock_london_underground';
+import {Model } from '../Components/Train';
 import "./ShowTrain.css";
 import { Physics } from '@react-three/cannon';
 import Rail from '../Components/Rail';
@@ -12,13 +12,21 @@ import { Sound } from '../Components/Sound';
 
 export default function ShowTrain() {
 
-  const [animate, setAnimate] = useState(false)
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if(animate === true) {
+      setTimeout(() => {
+        setAnimate(false)
+      }, 1000)
+    }
+  })
 
   return (
     <div className="canvas-wrapper">
     <div className='d-flex justify-content-center align-items-center'>
       <p className='mx-2'>Let pessengers in..</p> <button className='btn btn-primary mx-2 mb-2' onClick={() => setAnimate(true)} > Open the dor </button>
-       <button className='btn btn-danger mx-2 mb-2' onClick={() => setAnimate(false)} > Reset </button>
+       {/* <button className='btn btn-danger mx-2 mb-2' onClick={() => setAnimate(false)} > Reset </button> */}
     </div>
     <div className="canvas-container">
         <Canvas camera={{ fov: 45, position: [0, 2, -10]}}>

@@ -6,7 +6,7 @@ source: https://sketchfab.com/3d-models/bombardier-s-stock-london-underground-a6
 title: Bombardier S Stock London Underground
 */
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import * as THREE from 'three';
 
@@ -15,9 +15,16 @@ export function Model(props) {
   const { nodes, materials, animations, scene } = useGLTF('/bombardier_s_stock_london_underground.glb')
   const { actions } = useAnimations(animations, group)
 
+  const [runX, setRunX] = useState(1);
+
   useEffect(() => {
 
-    if(props.animate === true){
+    group.current.position.set(runX, -1.9, 0.3);
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+
+    if(props.animate){
       // actions.Animation.fadeIn(0.2);
       actions.Animation.play();
       actions.Animation.setLoop(THREE.LoopOnce);
@@ -25,11 +32,42 @@ export function Model(props) {
 
     }
 
-   let child = scene.children;
-   console.log(scene.children[0].children[0].children[0].children[0].children.length);
-    
-   scene.children[0].children[0].children[0].children[0].rotationX = Math.PI / 30;
-  }, [props.animate])
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keyup', handleKeyUp);
+
+    }
+
+  }, [props.animate, runX])
+ 
+  function handleKeyDown(e) {
+    if(e.keyCode === 37){
+      console.log("heej lijevo")
+      setRunX(runX - 2)
+    }
+
+    if(e.keyCode === 38){
+      console.log("heej gore")
+    }
+
+    if(e.keyCode === 39){
+      console.log("heej desno")
+      setRunX(runX + 2)
+
+    }
+
+    if(e.keyCode === 40){
+      console.log("heej dole")
+
+    }
+  }
+
+  function handleKeyUp(e) {
+
+  }
+
+
+ 
   return (
     <group ref={group} {...props} dispose={null} rotation={[0, -Math.PI / 2, 0]}>
       <group name="Sketchfab_Scene">
