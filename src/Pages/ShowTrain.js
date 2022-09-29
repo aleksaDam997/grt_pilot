@@ -29,7 +29,7 @@ export default function ShowTrain() {
        {/* <button className='btn btn-danger mx-2 mb-2' onClick={() => setAnimate(false)} > Reset </button> */}
     </div>
     <div className="canvas-container">
-        <Canvas camera={{ fov: 45, position: [0, 2, -10]}}>
+        <Canvas camera={{ fov: 50, position: [0, 2, -10]}}>
             <OrbitControls />
             <Sky />
             <ambientLight intensity={0.6} />
