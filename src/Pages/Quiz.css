@@ -1,0 +1,66 @@
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+      'question question'
+      'answer-1 answer-2'
+      'answer-3 answer-4';
+  
+      gap: 10px;
+      background-color: #2196F3;
+      padding: 10px;
+  
+  }
+  
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+  
+  .grid-container > button {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    border-radius: 3%;
+  }
+  
+  .question {
+    grid-area: question;
+  
+  }
+  
+  .answerA {
+    grid-area: answer-1;
+  }
+  
+  .answerB {
+    grid-area: answer-2;
+  }
+  
+  .answerC {
+    grid-area: answer-3;
+  }
+  
+  .answerD {
+    grid-area: answer-4;
+  }
+
+  .stats-container {
+    background-color: #2196F3;
+
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+  .stats-container p {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .button-container {
+    overflow: hidden;
+  }

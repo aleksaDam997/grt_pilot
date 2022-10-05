@@ -18,14 +18,14 @@ export default function ShowTrain() {
     if(animate === true) {
       setTimeout(() => {
         setAnimate(false)
-      }, 1000)
+      }, 1)
     }
   })
 
   return (
     <div className="canvas-wrapper">
     <div className='d-flex justify-content-center align-items-center'>
-      <p className='mx-2'>Let pessengers in..</p> <button className='btn btn-primary mx-2 mb-2' onClick={() => setAnimate(true)} > Open the dor </button>
+      <p className='mx-2 show-tran-paragraph'>Let pessengers in..</p> <button className='btn btn-primary mx-2 mb-2' onClick={() => setAnimate(true)} > Open the dor </button>
        {/* <button className='btn btn-danger mx-2 mb-2' onClick={() => setAnimate(false)} > Reset </button> */}
     </div>
     <div className="canvas-container">

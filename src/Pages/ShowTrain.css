@@ -6,12 +6,15 @@
 
 canvas {
     margin: 0;
+    margin-bottom: 100px;
+    border: 1px solid #eeeeee;
 
 }
 
- p {
-    font-size: large;
-    font-weight: bold;
+ .show-tran-paragraph {
+    /* font-size: large; */
+    /* font-weight: bold; */
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin-right: 5px;
 }
+
