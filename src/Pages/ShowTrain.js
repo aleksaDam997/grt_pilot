@@ -35,7 +35,7 @@ export default function ShowTrain() {
             <ambientLight intensity={0.6} />
             <directionalLight intensity={0.5}  />
 
-            <Sound url={"/web/mixkit-train-door-open-1637.wav"} play={animate} />
+            <Sound url={process.env.PUBLIC_URL + "mixkit-train-door-open-1637.wav"} play={animate} />
 
 
             <Physics gravity={[0, -30, 0]}>
