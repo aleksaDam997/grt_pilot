@@ -14,22 +14,22 @@ export default function ShowTrain() {
 
   const [animate, setAnimate] = useState(false);
 
-  useEffect(() => {
-    if(animate === true) {
-      setTimeout(() => {
-        setAnimate(false)
-      }, 1)
-    }
-  })
+  function animation() {
+    setAnimate(true);
+
+    setTimeout(() => {
+      setAnimate(false);
+    }, 2200)
+  }
 
   return (
     <div className="canvas-wrapper">
     <div className='d-flex justify-content-center align-items-center'>
-      <p className='mx-2 show-tran-paragraph'>Let pessengers in..</p> <button className='btn btn-primary mx-2 mb-2' onClick={() => setAnimate(true)} > Open the dor </button>
+      <p className='mx-2 show-tran-paragraph'>Let pessengers in..</p> <button className='btn btn-primary mx-2 mb-2' onClick={() => animation()} > Open the door </button>
        {/* <button className='btn btn-danger mx-2 mb-2' onClick={() => setAnimate(false)} > Reset </button> */}
     </div>
     <div className="canvas-container">
-        <Canvas camera={{ fov: 50, position: [0, 2, -10]}}>
+        <Canvas camera={{ fov: 50, position: [0, 2, -10]}} frameloop="demand" >
             <OrbitControls />
             <Sky />
             <ambientLight intensity={0.6} />

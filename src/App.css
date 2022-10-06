@@ -13,7 +13,7 @@ html, body, #root {
 
 }
 
-.animate__animated.animate__bounce {
+.animate__animated.animate__fadeInBottomLeft {
   --animate-duration: 2s;
   --animate-delay: 200ms;
 }
