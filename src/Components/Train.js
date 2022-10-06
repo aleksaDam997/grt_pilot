@@ -12,7 +12,7 @@ import * as THREE from 'three';
 
 export function Model(props) {
   const group = useRef()
-  const { nodes, materials, animations, scene } = useGLTF('/bombardier_s_stock_london_underground.glb')
+  const { nodes, materials, animations, scene } = useGLTF('/web/bombardier_s_stock_london_underground.glb')
   const { actions } = useAnimations(animations, group)
 
   const [runX, setRunX] = useState(1);

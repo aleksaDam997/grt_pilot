@@ -6,7 +6,7 @@ import { RepeatWrapping, TextureLoader } from 'three';
 export default function Rail(props) {
   
     const [ref] = usePlane(() => ( {rotation:[-Math.PI / 2, 0, 0], ...props}));
-    const texture = useLoader(TextureLoader, process.env.PUBLIC_URL + 'textures/TexturesCom_Rails0032_3_M.jpg')
+    const texture = useLoader(TextureLoader, '/web/textures/TexturesCom_Rails0032_3_M.jpg')
 
     return (
     <mesh ref={ref}>

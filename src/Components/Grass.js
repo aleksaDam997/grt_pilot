@@ -6,7 +6,7 @@ import { RepeatWrapping, TextureLoader } from 'three';
 export default function Grass(props) {
   
     const [ref] = usePlane(() => ( {rotation:[-Math.PI / 2, 0, 0], ...props}));
-    const texture = useLoader(TextureLoader, process.env.PUBLIC_URL + 'textures/TexturesCom_Grass0197_3_M.jpg')
+    const texture = useLoader(TextureLoader, '/web/textures/TexturesCom_Grass0197_3_M.jpg')
     texture.wrapS = RepeatWrapping;
     texture.wrapT = RepeatWrapping;
     texture.repeat.set(100, 100);
