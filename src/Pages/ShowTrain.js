@@ -19,13 +19,13 @@ export default function ShowTrain() {
 
     setTimeout(() => {
       setAnimate(false);
-    }, 2200)
+    }, 3200)
   }
 
   return (
     <div className="canvas-wrapper">
     <div className='d-flex justify-content-center align-items-center'>
-      <p className='mx-2 show-tran-paragraph'>Let pessengers in..</p> <button className='btn btn-primary mx-2 mb-2' onClick={() => animation()} > Open the door </button>
+      <p className='mx-2 show-tran-paragraph'>Let pessengers in..</p> <button disabled={animate} className='btn btn-primary mx-2 mb-2' onClick={() => animation()} > Open the door </button>
        {/* <button className='btn btn-danger mx-2 mb-2' onClick={() => setAnimate(false)} > Reset </button> */}
     </div>
     <div className="canvas-container">
